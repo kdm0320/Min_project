@@ -19,6 +19,8 @@ print(list(data))
 #Counter = Iterable한 객체 내부의 원소가 몇번씩 등장했는지 알려준다
 
 counter = Counter(['red','blue','green','blue','blue'])
-print(conter['blue'])
-print(conter['green'])
+print(counter['blue'])
+print(counter['green'])
 print(counter)
+
+#
