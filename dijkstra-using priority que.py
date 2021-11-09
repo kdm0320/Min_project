@@ -10,14 +10,16 @@ start = int(input())
 
 # 각 노드에 연결되어 있는 노드에 대한 정보를 담는 리스트
 graph = [[] for i in range(n+1)]
-#최단거리 테이블
-distance = [INF]*(n+1)
 
 #모든 간선 정보
 for _ in range(m):
     a,b,c = map(int, input().split())
     #a번 노드에서 b번 노드로 가는 비용이 c
     graph[a].append((b,c))
+
+#최단거리 테이블
+distance = [INF]*(n+1)
+
 
 def dijkstra(start):
     q=[]
@@ -41,8 +43,10 @@ def dijkstra(start):
 dijkstra(start)
 
 for i in range(1,n+1):
+    #도달할 수 없는 경우 "INFINITY" 출력
     if distance[i] == INF:
         print("INFINITY")
+    #도달할 수 있는 경우 거리를 출력
     else:
         print(distance[i])
 

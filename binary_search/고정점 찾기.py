@@ -1,4 +1,4 @@
-from bisect import bisect_left,bisect_right
+
 n = int(input())
 
 x = [-15, -4, 2,8,9,14,15]
