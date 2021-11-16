@@ -1,4 +1,7 @@
-pos=[0]*8
+from collections import  deque
 
-for i in range (8):
-    print(f'{pos[i]:2}', end=' ')
+n = "CBD"
+
+answer = deque([i for i in n])
+
+print(answer.index("C"))
