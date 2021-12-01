@@ -1,7 +1,7 @@
-from collections import  deque
 
-n = "CBD"
 
-answer = deque([i for i in n])
 
-print(answer.index("C"))
+check = {1:1,2:0,3:0}
+temp =  [i for i in check.values() ]
+
+print(temp)
