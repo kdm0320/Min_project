@@ -10,4 +10,20 @@ def gcd(a,b):
     else:
         return gcd(b, a % b)
 
-print(gcd(192,162))
+print(gcd(177,377))
+
+def gcd_iter(a,b):
+    temp_a  = max(a,b)
+    temp_b = min(a,b)
+    temp = 0
+    while True:
+        if temp_a % temp_b == 0:
+            return temp_b
+        else:
+            temp = temp_a
+            temp_a = temp_b
+            temp_b = temp % temp_b
+
+
+print(gcd_iter(177, 377))
+
