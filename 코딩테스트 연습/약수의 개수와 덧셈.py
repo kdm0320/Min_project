@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+from math import sqrt
+>>>>>>> origin/master
 
 
 def solution(left, right):
@@ -12,4 +16,8 @@ def solution(left, right):
 left = 24
 right = 27
 
+<<<<<<< HEAD
 print(solution(left,right))
+=======
+print(solution(left,right))
+>>>>>>> origin/master
