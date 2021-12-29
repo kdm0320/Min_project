@@ -6,7 +6,7 @@ def solution(numbers, target):
     return s.count(target)
 
 
-#DFS
+#DFS_BFS
 def DFS(numbers, target, depth):
     answer = 0
     if depth == len(numbers):
