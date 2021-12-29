@@ -1,4 +1,3 @@
-from math import pow
 
 def solution(n):
     rev_base = ''
