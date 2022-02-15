@@ -12,11 +12,20 @@ def is_prime_number(x):
 
 
 def solution(numbers):
-    comb = itertools.combinations(numbers,3)
-    for i in comb:
-        print(i)
-
-
+    answer = 0
+    nums = []
+    length = 1
+    while length <= len(numbers):
+        comb = itertools.permutations(numbers, length)
+        for i in comb:
+            a = int("".join(i))
+            if a not in nums:
+                nums.append(a)
+        length+=1
+    for i in nums:
+        if is_prime_number(i) and i > 1:
+            answer+=1
+    return answer
 numbers = "17"
 
 print(solution(numbers))

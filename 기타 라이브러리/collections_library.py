@@ -7,7 +7,7 @@
 # 첫번째 인덱스에 원소 x를 삽입할때 appendleft(x), 마지막 인덱스에 삽일할때 append(x)
 # deque를 큐로 이용할때 원소 삽입할때 append(),삭제할때는 poplef()
 
-from collections import deque,Counter
+from collections import deque,Counter,defaultdict
 
 data = deque([2,3,4])
 data.appendleft(1)
@@ -31,3 +31,15 @@ print(counter_most_common)
 # 가장 개수가 많은 K개의 데이터를 얻는것도 가능
 max_counter_most_common = Counter('hello world').most_common(1)
 print(max_counter_most_common)
+
+
+# defaultdict = 생성자로 기본값을 생성해주는 함수를 넘기면, 모든 키에 대해서 값이 없는 경우
+# 자동으로 생성자의 인자로 넘어온 함수를 호출하여 그 결과값으로 설정
+word = "apple"
+def countLetters(word):
+    counter = defaultdict(int)
+    for letter in word:
+        counter[letter] += 1
+    return counter
+
+print(countLetters(word))
