@@ -12,7 +12,6 @@ def is_prime_number(x):
 
 #여러개의 수가 소수인지 아닌지를 판별 - 에라토스테네스의 체
 #N보다 작거나 같은 모든 소수를 찾을 때 사용 가능
-
 def eratostenes(n):
     array = [True for i in range(n+1)] # 처음엔 모든 수가 소수(True)인 것으로 초기화(0,1은 제외)
 
