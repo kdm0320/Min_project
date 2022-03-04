@@ -37,9 +37,9 @@ print(max_counter_most_common)
 # 자동으로 생성자의 인자로 넘어온 함수를 호출하여 그 결과값으로 설정
 word = "apple"
 def countLetters(word):
-    counter = defaultdict(int)
+    count = defaultdict(int)
     for letter in word:
-        counter[letter] += 1
+        count[letter] += 1
     return counter
 
 print(countLetters(word))
