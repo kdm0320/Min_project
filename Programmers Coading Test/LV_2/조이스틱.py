@@ -1,5 +1,6 @@
 def alphabet_to_num(char):
     num_char = [i for i in range(14)] + [j for j in range(12, 0, -1)]
+    a = ord(char) - ord('A')
     return num_char[ord(char) - ord('A')]
 
 def solution(name):
@@ -20,6 +21,6 @@ def solution(name):
     answer += move
     return answer
 
-name="JEROEN"
+name="A"
 
 print(solution(name))
