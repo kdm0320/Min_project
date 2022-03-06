@@ -1,7 +1,7 @@
 from itertools import combinations
 
 
-
+#https://codlingual.tistory.com/161
 def solution(relation):
     # key의 개수
     N = len(relation[0])

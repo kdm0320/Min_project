@@ -2,14 +2,18 @@ n = int(input())
 space = [1,1]
 
 roots = list(input().split())
-for root in roots:
-    plan = {'L': space[1] - 1, 'R': space[1] + 1, 'U': space[0] - 1, 'D': space[0] + 1}
-    if plan[root] <= 0 or plan[root] > n:
-        pass
-    elif root=='L' or root=='R':
-        space[1] = plan[root]
-    elif root=='U' or root=='D':
-        space[0] = plan[root]
-for i in space:
-    print(i,end = ' ')
 
+method = {"L":0,"R":1,"U":2,"D":3}
+dx = [0,0,-1,1]
+dy = [-1,1,0,0]
+x=1
+y=1
+for i in roots:
+    temp_x = x+dx[method[i]]
+    temp_y = y+dy[method[i]]
+    if temp_x > n or temp_x < 1 or temp_y < 1 or temp_y > n:
+        pass
+    else:
+        x = temp_x
+        y = temp_y
+print(x,y)

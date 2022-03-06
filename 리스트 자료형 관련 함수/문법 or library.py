@@ -23,3 +23,9 @@ remove_set = [1,2,3,4]
 # 5 제거
 result = [i for i in a if i in remove_set]
 print(f"리스트 {a} 에서 '5'를 제거한 결과: {result}")
+
+#extend
+origin = [1,2,3]
+add = [4,5]
+origin.extend(add)
+print(origin)
