@@ -1,5 +1,9 @@
 from collections import deque
 
+"""
+간선의 거리가 같을 때 최단거리를 찾는 알고리즘
+"""
+
 def bfs(graph,start,visited):
     queue = deque([start])
     #현재 노드 방문 처리
