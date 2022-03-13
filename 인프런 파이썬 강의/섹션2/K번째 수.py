@@ -22,7 +22,7 @@ k번째로 나타나는 숫자를 출력하는 프로그램을 작성하세요.
 """
 import sys
 
-NUM = 5
+NUM = 3
 
 sys.stdin=open(f"/Users/gimdongmin/Desktop/파이썬 알고리즘 강의/섹션 2/2. k번째 수/in{NUM}.txt","rt")
 file = open(f"/Users/gimdongmin/Desktop/파이썬 알고리즘 강의/섹션 2/2. k번째 수/out{NUM}.txt")

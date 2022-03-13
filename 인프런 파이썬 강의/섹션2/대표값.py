@@ -20,30 +20,43 @@ N명의 학생 중 평균에 가장 가까운 학생은 몇 번째 학생인지 
 
 
 import sys
-NUM = 5
+NUM = 3
 sys.stdin=open(f"/Users/gimdongmin/Desktop/파이썬 알고리즘 강의/섹션 2/4. 대표값/in{NUM}.txt","rt")
 file = open(f"/Users/gimdongmin/Desktop/파이썬 알고리즘 강의/섹션 2/4. 대표값/out{NUM}.txt")
 answer = file.read()
 print(f"answer : \n{answer}")
 print(f"{'-'*50}")
 
+
 n = int(input())
 scores = list(map(int, input().split()))
-average = round(sum(scores) / n)
-stu = []
+average = int(sum(scores) / n + 0.5)
 min = 999999
-for index,score in enumerate(scores):
-     temp = abs(average - score)
-     if temp < min:
-         min = temp
-         stu = []
-         stu.append((score,index))
-     elif temp == min:
-         stu.append((score,index))
+# for index,score in enumerate(scores):
+#      temp = abs(average - score)
+#      if temp < min:
+#          min = temp
+#          stu = []
+#          stu.append((score,index))
+#      elif temp == min:
+#          stu.append((score,index))
+#
+# stu.sort(key= lambda x : (x[0],x[1]), reverse=True)
+# stu.sort(key= lambda x : (x[1],x[0]))
+# score = 0
+# res = 0
+for index,x in enumerate(scores):
+    temp = abs(average-x)
+    if temp < min:
+        min = temp
+        score= x
+        res = index
+    elif temp == min:
+        if x > score:
+            score=x
+            res = index
 
-stu.sort(key= lambda x : (x[0],x[1]), reverse=True)
-stu.sort(key= lambda x : (x[1],x[0]))
-print(average, stu[0][1]+1)
+print(average, res+1)
 
 
 

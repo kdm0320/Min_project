@@ -19,7 +19,7 @@ NUM = 2
 sys.stdin=open(f"/Users/gimdongmin/Desktop/파이썬 알고리즘 강의/섹션 2/1. k번째 약수/in{NUM}.txt","rt")
 file = open(f"/Users/gimdongmin/Desktop/파이썬 알고리즘 강의/섹션 2/1. k번째 약수/out{NUM}.txt")
 answer = file.read()
-print(f"answer : {answer}")
+print(f"answer : \n{answer}")
 print(f"{'-'*50}")
 
 n,k = map(int,input().split())
