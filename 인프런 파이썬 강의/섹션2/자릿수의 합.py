@@ -14,7 +14,7 @@ N개의 자연수가 입력되면 각 자연수의 자릿수의 합을 구하고
 
 #---------- 정답 입력 코드 -----------------
 import sys
-NUM = 4
+NUM = 2
 sys.stdin=open(f"/Users/gimdongmin/Desktop/파이썬 알고리즘 강의/섹션 2/6. 자릿수의 합/in{NUM}.txt","rt")
 file = open(f"/Users/gimdongmin/Desktop/파이썬 알고리즘 강의/섹션 2/6. 자릿수의 합/out{NUM}.txt")
 answer = file.read()
@@ -24,16 +24,36 @@ print(f"{'-'*50}")
 
 
 #------------ 내 풀이 코드 -----------------
+def digit_sum(x):
+    total = 0
+    for i in x:
+        total += int(i)
+    return total
 
 n = int(input())
-nums = list(input().split())
+nums = input().split()
 maximum = 0
 answer = ""
 for num in nums:
-    tmp = 0
-    for i in num:
-        tmp += int(i)
+    tmp = digit_sum(num)
     if tmp > maximum:
         maximum = tmp
         answer = num
 print(answer)
+#------------ 숫자 이용 풀이 코드 -----------------
+# def digit_sum(x):
+#     total = 0
+#     while x> 0:
+#         total+=x%10
+#         x = x//10
+#     return total
+#
+# n = int(input())
+# nums = list(map(int,input().split()))
+# maximum = 0
+# for num in nums:
+#     tmp = digit_sum(num)
+#     if tmp > maximum:
+#         maximum = tmp
+#         answer = num
+# print(answer)

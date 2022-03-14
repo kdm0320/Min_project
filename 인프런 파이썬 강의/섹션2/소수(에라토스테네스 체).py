@@ -25,7 +25,7 @@ def eratostenes(n):
                 array[i * j] = False
                 j += 1
     cnt = 0
-    for i in range(2, n + 1):  # 모든 소수 출력
+    for i in range(2, n + 1):  # 모든 소수 개수 출력
         if array[i]:
             cnt+=1
     print(cnt)
