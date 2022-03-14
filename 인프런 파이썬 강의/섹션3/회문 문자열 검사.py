@@ -25,11 +25,15 @@ file = open(f"/Users/gimdongmin/Desktop/파이썬 알고ᄅ
 answer = file.read()
 print(f"answer : \n{answer}")
 print(f"{'-'*50}")
-#---------- 정답 입력 코드 -----------------
+#----------------------------------------
+
+
+#------------ 내 풀이 코드 -----------------
+
 n = int(input())
 words = []
 for _ in range(n):
-    w = input()
+    w = input().lower()
     words.append(w)
 
 for index,word in enumerate(words):
@@ -38,7 +42,7 @@ for index,word in enumerate(words):
     i = 0
     j = len(word) -1
     for _ in range(len(word)//2):
-        if word[i].lower() != word[j].lower():
+        if word[i]!= word[j]:
             print(f"#{index+1} NO")
             break
         else:
