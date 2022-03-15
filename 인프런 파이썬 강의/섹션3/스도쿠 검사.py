@@ -9,7 +9,6 @@ print(f"{'-'*50}")
 #-----------------------------------------
 
 #------------ 내 풀이 코드 ------------------
-# 0-2, 3-5, 6-9
 
 def is_right_big(matrix):
     for row in range(len(matrix)):
@@ -39,11 +38,10 @@ def is_right_div(matirx):
         return False
     return True
 
-sdoku = []
-for _ in range(9):
-    sdoku.append(list(map(int, input().split())))
-
-def solution(sdoku):
+def solution():
+    sdoku = []
+    for _ in range(9):
+        sdoku.append(list(map(int, input().split())))
     if is_right_big(sdoku):
         c_div = 0
         for _ in range(3):
@@ -61,4 +59,29 @@ def solution(sdoku):
     else:
         return "NO"
 
-print(solution(sdoku))
+#-----------영상 풀이 코드 -------------------
+def check(matrix):
+    for i in range(9):
+        row_check = [0] * 10
+        col_check = [0] * 10
+        for j in range(9):
+            row_check[matrix[i][j]] = 1
+            col_check[matrix[j][i]] = 1
+        if sum(row_check) != 9 or sum(col_check) !=9:
+            return False
+    for i in range(3):
+        for j in range(3):
+            group_check = [0]*10
+            for k in range(3):
+                for s in range(3):
+                    group_check[matrix[i*3+k][j*3+s]] = 1
+            if sum(group_check) != 0:
+                return False
+    return True
+
+sdoku = [list(map(int,input().split())) for _ in range(9)]
+
+if check(sdoku):
+    print("YES")
+else:
+    print("NO")
