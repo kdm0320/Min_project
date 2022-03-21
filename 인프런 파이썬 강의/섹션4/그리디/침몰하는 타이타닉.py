@@ -1,6 +1,6 @@
 #---------- 정답 입력 코드 -----------------
 import sys
-NUM = 2
+NUM = 5
 sys.stdin=open(f"/Users/gimdongmin/Desktop/파이썬 알고리즘 강의/섹션 4/8. 침몰하는 타이타닉/in{NUM}.txt","rt")
 file = open(f"/Users/gimdongmin/Desktop/파이썬 알고리즘 강의/섹션 4/8. 침몰하는 타이타닉/out{NUM}.txt")
 answer = file.read()
@@ -33,3 +33,4 @@ print(solution())
 
 
 #-----------영상 풀이 코드 -------------------
+#같음
