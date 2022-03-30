@@ -1,47 +1,46 @@
-import heapq
 
 
-def dijkstra(distance,graph,start):
-    q=[]
-    #시작노드로 가기 위한 최단 경로는 0으로 설정하여,q에 삽입
-    heapq.heappush(q, (0,start))
-    distance[start] = 0
-    while q: #큐가 비어있지 않다면
-        #가장 최단 거리가 짧은 노드를 꺼낸다 dis:최단거리, now:노드
-        dist,now = heapq.heappop(q)
-        if distance[now]<dist:
-            continue
-        # 현재 노드와 연결된 다른 인접한 노드들을 확인
-        for i in graph[now]:
-            cost = dist+i[1] # 현재 노드를 거쳐서 다른 노드로 이동 하는 거리
-            #현재 노드를 거쳐서, 다른 노드로 이동하는 거리(cost) 가 더 짧은 경유
-            if cost<distance[i[0]]:
-                distance[i[0]] = cost
-                heapq.heappush(q,(cost,i[0]))
+def solution(num_teams, remote_tasks, office_tasks, employees):
+    answer = []
+    teams = {}
+    for n in range(1,num_teams+1):
+        teams[str(n)] = [[]]
 
-
-
-
-
-
-def solution(n, edges):
-    answer = 0
-
-    INF = int(1e9)
-
-    distance = [INF] * (n)
-    dijkstra(distance,edges,0)
-
-    for i in range(1, n + 1):
-        # 도달할 수 없는 경우 "INFINITY" 출력
-        if distance[i] == INF:
-            print("INFINITY")
-        # 도달할 수 있는 경우 거리를 출력
+    for index,em in enumerate(employees):
+        task = ""
+        is_remote = False
+        is_office = False
+        for i in range(2,len(em)):
+            if em[i].isspace():
+                if task in remote_tasks:
+                    is_remote = True
+                else:
+                    is_office = True
+                task =""
+                continue
+            task+=em[i]
+            if i==len(em)-1:
+                if task in remote_tasks:
+                    is_remote = True
+                else:
+                    is_office = True
+                task =""
+        if is_office:
+            teams[em[0]][0].append(index+1)
         else:
-            print(distance[i])
+            teams[em[0]].append(index + 1)
+    for i in teams:
+        if len(teams[i][0]) == 0:
+            for j in teams[i][2:]:
+                answer.append(j)
+        else:
+            for j in teams[i][1:]:
+                answer.append(j)
     return answer
 
-n = 5
-edges = [[0,1],[0,2],[1,3],[1,4]]
+num_teams = 3
 
-print(solution(n,edges))
+remote_tasks = ["design"]
+office_tasks = ["building","supervise"]
+employees =["2 design","1 supervise building design","1 design","2 design"]
+print(solution(num_teams, remote_tasks, office_tasks, employees))

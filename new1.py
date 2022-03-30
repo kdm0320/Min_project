@@ -2,37 +2,42 @@
 
 import decimal
 
-def solution(n, clockwise):
-    answer = [[]]
-    start = 0  # 숫자 1, 2, 3, ...
-    step = 1  # 증가/감소 크기: 1, -1
-    y = 0  # 줄 위치
-    x = -1  # 칸 위치 (배열 선두보다 한칸 앞)
-    arr = [[0] * n for i in range(n)]  # 2차원 배열 구조
-    cnt = 1
-    while cnt < round(n/2):
-        for i in range(n-cnt):  # 몇 칸 진행할까
-            start += 1
-            x += step
-            arr[y][x] = start
-        cnt += 1
-        for i in range(n-cnt):  # 몇 줄 진행할까
-            start += 1
-            y += step
-            arr[y][x] = start
-        cnt += 1
-        step = -step  # 증감 방향을 반대로
+def solution(sentences, n):
+    answer =0
+    s_set = set()
+    for sen in sentences:
+        in_alpha = False
+        f_set = set()
+        n_set = 0
+        for s in sen:
+            if s.isupper():
+                in_alpha=True
+            s.lower()
+            if s.isspace():
+                continue
+            f_set.add(s.lower())
+        if in_alpha:
+            n_set+=1
+        n_set+=len(f_set)
+        if n_set > n:
+            continue
+        else:
+            tmp =0
+            for s in sen:
+                tmp+=1
+                if s.isupper():
+                    tmp+=1
+            if s_set & f_set == f_set:
+                answer+=tmp
+            else:
+                if answer < tmp:
+                    s_set.clear()
+                    s_set=s_set.union(f_set)
+                    answer = tmp
 
-    # 2차원 리스트 출력하기
-    for line in arr:
-        for n in line:
-            print('%3d' % n, end='')
-        print()
 
     return answer
 
-
+sentences =["ABcD", "bdbc", "a", "Line neWs"]
 n = 5
-clockwise =True
-
-print(solution(n,clockwise))
+print(solution(sentences,n))

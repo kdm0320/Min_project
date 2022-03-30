@@ -1,28 +1,52 @@
-def solution(money, costs):
+def solution(logs):
     answer = 0
-    cost_hash = {}
-    coins = [1,5,10,50,100,500]
-    use = [1]
-    for i in range(6):
-        cost_hash[coins[i]] = costs[i]
-    for i in range(1,6):
-        if cost_hash[1]*coins[i] >= cost_hash[coins[i]]:
-            use.append(coins[i])
-    use.sort(reverse=True)
-    cnt = 0
-    for coin in use:
-        cnt+=money//coin
-        answer+=cost_hash[coin]*cnt
-        cnt=0
-        money%=coin
 
-    print(use)
-
+    first = [" team_name "," application_name "," error_level "]
+    sec =": "
+    f=False
+    s=False
+    for log in logs:
+        k = ""
+        for i in range(len(log)):
+            if i==0:
+                k+=" "
+                k += log[i]
+            else:
+                if log[i]==":":
+                    if k not in first:
+                        answer+=1
+                        break
+                    else:
+                        k=""
+                        f = True
+                        k+=log[i]
+                elif f and not s:
+                    k += log[i]
+                    if k == sec:
+                        k=""
+                        s=True
+                elif f and s:
+                    if log[i].isspace():
+                        for j in k:
+                            if not j.isalpha():
+                                answer+=1
+                                break
+                        else:
+                            k=""
+                            f=False
+                            s=False
+                            k += log[i]
+                    else:
+                        k += log[i]
+                else:
+                    k += log[i]
     return answer
 
 
-money = 1999
-costs = 	[2, 11, 20, 100, 200, 600]
 
+logs = ["team_name : db application_name : dbtest error_level : info message : test",
+        "team_name : test application_name : I DONT CARE error_level : error message : x",
+        "team_name : ThisIsJustForTest application_name : TestAndTestAndTestAndTest error_level : test message : IAlwaysTestingAndIWillTestForever",
+        "team_name : oberervability application_name : LogViewer error_level : error"]
 
-print(solution(money,costs))
+print(solution(logs))
