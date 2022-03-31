@@ -37,7 +37,7 @@ for x in a:
   sh[x] = sh.get(x,0)+1
 for x in b:
   sh[x] = sh.get(x, 0) - 1
-for i in sh:a
+for i in sh:
   if sh[i] > 0:
     print("NO")
     break
