@@ -9,7 +9,6 @@ print(f"{'-'*50}")
 #----------------------------------------
 
 #------------ 내 풀이 코드 -----------------
-from collections import  deque
 def solution():
     n = int(input())
     q = list(input() for _ in range(n))
