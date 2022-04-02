@@ -1,8 +1,8 @@
 #---------- 정답 입력 코드 -----------------
 import sys
 NUM = 2
-sys.stdin=open(f"/Users/gimdongmin/Desktop/파이썬 알고리즘 강의/섹션 5/11. 최대힙/in{NUM}.txt","rt")
-file = open(f"/Users/gimdongmin/Desktop/파이썬 알고리즘 강의/섹션 5/11. 최대힙/out{NUM}.txt")
+sys.stdin=open(f"/Users/gimdongmin/Desktop/파이썬 알고리즘 강의/섹션 6/11. 최대힙/in{NUM}.txt","rt")
+file = open(f"/Users/gimdongmin/Desktop/파이썬 알고리즘 강의/섹션 6/11. 최대힙/out{NUM}.txt")
 answer = file.read()
 print(f"answer : \n{answer}")
 print(f"{'-'*50}")
