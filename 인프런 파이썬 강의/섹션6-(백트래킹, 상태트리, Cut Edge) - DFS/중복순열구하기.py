@@ -11,7 +11,7 @@ print(f"{'-'*50}")
 
 #------------ 내 풀이 코드 ----------------- => 라이브러리 사용
 from itertools import product
-import time,math
+import time
 def solution():
     start = time.time()
     n,m = map(int, input().split())

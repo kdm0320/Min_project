@@ -1,52 +1,20 @@
-def solution(logs):
-    answer = 0
+def getMaxBarrier(initialEnergy, th):
+    b = [0]*len(initialEnergy)
+    k=0
+    while True:
+       for i in range(len(initialEnergy)):
+            tmp = initialEnergy[i]-k
+            if tmp <= 0:
+                tmp = 0
+            b[i] = tmp
+       if sum(b) == th:
+            return k
+       elif sum(b) < th:
+           return k-1
+       else:
+            k+=1
 
-    first = [" team_name "," application_name "," error_level "]
-    sec =": "
-    f=False
-    s=False
-    for log in logs:
-        k = ""
-        for i in range(len(log)):
-            if i==0:
-                k+=" "
-                k += log[i]
-            else:
-                if log[i]==":":
-                    if k not in first:
-                        answer+=1
-                        break
-                    else:
-                        k=""
-                        f = True
-                        k+=log[i]
-                elif f and not s:
-                    k += log[i]
-                    if k == sec:
-                        k=""
-                        s=True
-                elif f and s:
-                    if log[i].isspace():
-                        for j in k:
-                            if not j.isalpha():
-                                answer+=1
-                                break
-                        else:
-                            k=""
-                            f=False
-                            s=False
-                            k += log[i]
-                    else:
-                        k += log[i]
-                else:
-                    k += log[i]
-    return answer
+initialEnergy = [5, 2, 13, 10]
+th = 8
 
-
-
-logs = ["team_name : db application_name : dbtest error_level : info message : test",
-        "team_name : test application_name : I DONT CARE error_level : error message : x",
-        "team_name : ThisIsJustForTest application_name : TestAndTestAndTestAndTest error_level : test message : IAlwaysTestingAndIWillTestForever",
-        "team_name : oberervability application_name : LogViewer error_level : error"]
-
-print(solution(logs))
+print(getMaxBarrier(initialEnergy,th))
