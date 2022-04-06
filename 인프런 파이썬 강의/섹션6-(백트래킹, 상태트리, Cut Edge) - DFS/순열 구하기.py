@@ -43,8 +43,6 @@ def dfs(l):
                 dfs(l+1)
                 check[i] = 0
 start = time.time()
-
-
 n,m = map(int, input().split())
 res = [0]*m
 check = [0]*(n+1)
