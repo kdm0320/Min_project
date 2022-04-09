@@ -1,20 +1,40 @@
-def getMaxBarrier(initialEnergy, th):
-    b = [0]*len(initialEnergy)
-    s = []
-    for i in range(th-2,th+1):
-        for j in range(len(initialEnergy)):
-            tmp = initialEnergy[j]-i
-            if tmp <= 0:
-                tmp = 0
-                b[j] = tmp
-        s.append(sum(b))
-    answer = 0
-    for i in s:
-        if i >= th:
-            pass
+tstring = "{a} {b} {c} {d} {i}"
+variables = [["b","{c}"],["a","{b}"],["e","{f}"],["h","i"],["d","{e}"],["f","{d}"],["c","d"]]
+
+def solution(tstring, variables):
+    answer =""
+    tmp = tstring
+    v=""
+    g=[tstring]
+    h={}
+    for i in variables:
+        a,b=i
+        h[a] = b
+    ch=False
+    while True:
+        for i in tmp:
+            if i=="{":
+                ch=True
+                continue
+            elif i=="}":
+                ch=False
+                if v in h.keys():
+                    answer+=h[v]
+                    v=""
+
+                else:
+                    answer+="{"+v+"}"
+                    v=""
+            else:
+                if ch:
+                    v+=i
+                else:
+                    answer+=i
+        if answer in g:
+            return answer
         else:
-            answer = max(answer,i)
-    return answer
-initialEnergy = [5,2,13,10]
-th = 8
-print(getMaxBarrier(initialEnergy,th))
+            g.append(answer)
+            tmp=answer
+            answer = ""
+
+print(solution(tstring,variables))
